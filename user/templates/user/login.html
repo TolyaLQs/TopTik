@@ -1,0 +1,38 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+    <title>TopTik - Вход в аккаунт</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/user/login.css">
+{% endblock %}
+
+{% block content %}
+    <div class="login-register">
+
+        <div class="form-login">
+            <div class="title">
+                <span>Вход</span>
+            </div>
+            <form class="login" method="post">
+                <input type="text" placeholder="Введите email" name="email" required>
+                <input type="password" placeholder="Введите пароль" name="password" required>
+                <button type="submit" class="btn-login">Войти</button>
+            </form>
+        </div>
+        <div class="form-register">
+            <div class="title">
+                <span>Регистрация</span>
+            </div>
+            <form class="register" method="post">
+                <input type="text" placeholder="Введите имя пользователя" name="username" required>
+                <button type="submit" class="btn-register">Далее</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
