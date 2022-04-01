@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/static/css/main/index.css">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="left-menu">
+        {% if user.is_authenticated %}
+        {% else %}
+        <div class="popular-following">
+            <span class="popular">Популярное</span>
+            <span class="following">Подписки</span>
+        </div>
+        {% endif %}
+        <div class="popular-tags">
+
+        </div>
+    </div>
+    <div class="ribbon">
+
+    </div>
+</div>
+{% endblock %}

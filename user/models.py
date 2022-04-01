@@ -6,7 +6,7 @@ from django.db import models
 
 
 class UnicodeEmailValidator(validators.RegexValidator):
-    regex = r'^[\w.]+@[\w.].[a-z]+$'
+    regex = r'^[-\w\.]+@([-\w]+\.)+[-\w]{2,4}$'
     message = 'Enter a valid email. This value may contain only letters,' \
               ' numbers, and @/./+/-/_ characters.'
     flags = 0

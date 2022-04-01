@@ -9,12 +9,6 @@ from user.models import User
 
 
 def user_login(request):
-    if request.is_ajax():
-        context = {
-            'login': reverse('user:login'),
-        }
-        return JsonResponse(context)
-
     if request.POST:
         if 'email' in request.POST and request.POST['email']:
             email = request.POST['email']
@@ -29,8 +23,8 @@ def user_login(request):
                     'error': error,
                 }
                 return render(request, 'user/login.html', context)
-        elif 'name' in request.POST and request.POST['name']:
-            name = request.POST['name']
+        elif 'username' in request.POST and request.POST['username']:
+            name = request.POST['username']
             user = User.objects.filter(name=name)
             if user:
                 error = 'Данное имя занято.'

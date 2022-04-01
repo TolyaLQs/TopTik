@@ -5,6 +5,6 @@ app_name = 'main'
 
 urlpatterns = [
     re_path('', main.index, name='index'),
-    re_path('/about$', main.about, name='about')
+    re_path('about/$', main.about, name='about')
 ]
 

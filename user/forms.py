@@ -1,5 +1,4 @@
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
 from user.models import User
 
 
@@ -42,4 +41,8 @@ class ChangeUserAvatarForm(UserChangeForm):
             field.help_text = ''
             if field == 'avatar':
                 field = '/user/ava.png'
+
+
+
+
 
