@@ -65,9 +65,36 @@
 </div>
 {% endblock %}
 
-{% block content %}
-{% endblock %}
+<div class="content">
+    <div class="left-menu">
+        {% if user.is_authenticated %}
+        {% else %}
+        <div class="popular-following">
+            <span class="popular">Популярное</span>
+            <span class="following">Подписки</span>
+        </div>
+        {% endif %}
+        <div class="popular-tags">
 
+        </div>
+    </div>
+    <div class="ribbon">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <div class="my-following">
+        {% if user.is_authenticated %}
+        <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Мои подписки</span> <img src="/static/img/following.png"></div>
+            <div class="my-fol-tit-img"></div>
+        {% else %}
+        <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Топ подписчиков</span> <img src="/static/img/following.png"></div>
+            <div class="my-fol-tit-img"></div>
+        {% endif %}
+
+    </div>
+</div>
 {% block footer %}
 <div class="footer">
             <span class="years">
@@ -78,7 +105,7 @@
             </span>
 </div>
 {% endblock %}
-
+<script src="/static/js/body.js"></script>
 {% block js %}
 
 {% endblock %}
