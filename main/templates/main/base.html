@@ -83,16 +83,17 @@
 
         {% endblock %}
     </div>
+    <div class="my-following-fon">
+        <div class="my-following">
+            {% if user.is_authenticated %}
+            <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Мои подписки</span> <img src="/static/img/following.png"></div>
+                <div class="my-fol-tit-img"></div>
+            {% else %}
+            <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Топ подписчиков</span> <img src="/static/img/following.png"></div>
+                <div class="my-fol-tit-img"></div>
+            {% endif %}
 
-    <div class="my-following">
-        {% if user.is_authenticated %}
-        <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Мои подписки</span> <img src="/static/img/following.png"></div>
-            <div class="my-fol-tit-img"></div>
-        {% else %}
-        <div class="my-fol-tit"><span class="my-fol-tit-span" style="display: none">Топ подписчиков</span> <img src="/static/img/following.png"></div>
-            <div class="my-fol-tit-img"></div>
-        {% endif %}
-
+        </div>
     </div>
 </div>
 {% block footer %}

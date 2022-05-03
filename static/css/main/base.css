@@ -136,6 +136,19 @@ body {
     align-items:center;
 }
 
+.ribbon{
+    max-width:90%;
+    min-width:40%;
+    max-height:100%;
+}
+
+.my-following-fon{
+    height: 100%;
+    width: 200px;
+    display:flex;
+    justify-content: end;
+}
+
 .my-following{
     height: 100%;
     width: 50px;

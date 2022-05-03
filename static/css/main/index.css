@@ -7,3 +7,23 @@
     src: url("/static/font/boomerang/Boomerang.ttf");
 }
 
+.index-content{
+    height: 100%;
+    width:100%;
+}
+
+.posts{
+    height: 100%;
+    width:100%;
+    display: flex;
+    overflow: auto;
+    width:100%;
+}
+
+.post{
+    background-color: #dddddd;
+    height: 100%;
+    width:100%;
+    border-radius: 20px;
+    padding: 20px;
+}
