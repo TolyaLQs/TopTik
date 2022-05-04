@@ -12,7 +12,7 @@ def user_login(request):
     if request.POST:
         if 'email' in request.POST and request.POST['email']:
             email = request.POST['email']
-            password = request.POST['psw']
+            password = request.POST['password']
             user = authenticate(email=email, password=password)
             if user is not None:
                 login(request, user)

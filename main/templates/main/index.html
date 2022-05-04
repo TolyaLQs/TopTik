@@ -7,12 +7,18 @@
 {% block content %}
     <div class="index-content">
         <div class="posts">
+            {% for post in posts %}
             <div class="post">
-                <a><img></a>
+                <a class="{% if request.resolver_match.url_name == 'game' %}active{% endif %}"
+                           href="{% url 'user:profile' post.author.id %}">
+                <img src="{{post.author.avatar.url}}"></a>
                 <div class="post-desc-img">
-                    <div class="desc-post"></div>
+                    <div class="title-post">{{post.title}}</div>
+                    <div class="desc-post">{{post.desc}}</div>
+                    <div class="tag-post">{{post}}</div>
+
                     <div class="div-img">
-                        <img class="img-post">
+                        <img class="img-post" src="{{post.img.url}}">
                         <div class="img-l-f-r">
                             <div class="like-post">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24" height="24">
@@ -39,6 +45,9 @@
                     </div>
                 </div>
             </div>
+            {% empty %}
+                <div class="non-posts">Don't have posts.</div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

@@ -16,6 +16,9 @@
                 <span>Вход</span>
             </div>
             <form class="login" method="post">
+                {% if error %}
+                    {{error}}
+                {% endif%}
                 <input type="email" placeholder="Введите email" name="email" required>
                 <input type="password" placeholder="Введите пароль" name="password" required>
                 <button type="submit" class="btn-login">Войти</button>

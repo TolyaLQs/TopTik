@@ -13,7 +13,10 @@ class UnicodeEmailValidator(validators.RegexValidator):
 
 
 class SexUser(models.Model):
-    sex = models.Value('Муж.', 'Жен.')
+    sex = models.CharField(verbose_name='Пол', max_length=15, blank=True)
+
+    def __str__(self):
+        return f'{self.sex}'
 
 
 class User(AbstractUser):
