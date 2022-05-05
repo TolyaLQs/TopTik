@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, PostLike, PostTag
 from user.models import FriendUser, User
 
 # Create your views here.
 
 
 def index(request):
-    # # if user.authenticated:
+    # # if request.user.authenticated:
     #     posts = Post.objects.all().filter(author=user__friend_user.friend_user__name).order_by('-date_add')
     #     friends = FriendUser.objects.filter(user_friend__name=user.name)
     #     context = {
@@ -18,6 +18,7 @@ def index(request):
     # user.set_password('1234')
     # user.save()
     posts = Post.objects.all().order_by('-date_add')
+    print(Post.quantity(posts))
     context = {
         'posts': posts,
     }
