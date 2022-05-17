@@ -58,6 +58,10 @@ def user_register(request):
                 return HttpResponseRedirect(reverse('main:index'))
     else:
         register_form = CreateUserForm()
+        for reg in register_form:
+            if reg.name == 'name':
+                reg.initial = name
+
     context = {
         'register_form': register_form,
         'name': name,

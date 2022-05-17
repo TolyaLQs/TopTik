@@ -23,11 +23,11 @@ class Post(models.Model):
     date_add = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     active = models.BooleanField(verbose_name='Активность', default=True)
     author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
-    auto_increment_id = models.AutoField(primary_key=True)
+    # auto_increment_id = models.AutoField(primary_key=True)
 
-    def quantity(self):
-        quantity = PostLike.objects.filter(post__auto_increment_id=self.auto_increment_id).count()
-        return quantity
+    # def quantity(self):
+    #     quantity = PostLike.objects.filter(post_id=id).count()
+    #     return quantity
 
     def __str__(self):
         return f'{self.date_add} | {self.title}'

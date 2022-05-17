@@ -14,9 +14,9 @@
             <div class="title">
                 <span>Регистрация</span>
             </div>
-            <form class="register" method="post">
-                <input type="text" placeholder="Введите имя пользователя" name="username" required>
-                <button type="submit" class="btn-register">Далее</button>
+            <form method="post" class="form-control">
+            {{ register_form.as_p }}
+                <button type="submit">Зарегистрироваться</button>
             </form>
         </div>
     </div>

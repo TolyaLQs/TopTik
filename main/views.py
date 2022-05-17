@@ -17,8 +17,7 @@ def index(request):
     # user = User.objects.get()
     # user.set_password('1234')
     # user.save()
-    posts = Post.objects.all().order_by('-date_add')
-    print(Post.quantity(posts))
+    posts = Post.objects.all().filter(active=True).order_by('-date_add')
     context = {
         'posts': posts,
     }

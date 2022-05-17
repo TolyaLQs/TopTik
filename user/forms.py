@@ -10,9 +10,30 @@ class CreateUserForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        i = 0
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'form_control'
+            i += 1
+            field.widget.attrs['class'] = f'input_control {i}'
             field.help_text = ''
+            if field_name == 'name':
+                field.widget.attrs['placeholder'] = field.label
+                field.label = ''
+            if field_name == 'email':
+                field.widget.attrs['placeholder'] = field.label
+                field.label = ''
+            if field_name == 'password1':
+                field.widget.attrs['placeholder'] = field.label
+                field.label = ''
+            if field_name == 'password2':
+                field.widget.attrs['placeholder'] = field.label
+                field.label = ''
+            if field_name == 'sex':
+                field.widget.attrs['type'] = 'ratio'
+                field.label = ''
+            if field_name == 'avatar':
+                field.initial = 'user/ava.png'
+                field.widget.attrs['placeholder'] = field.label
+                field.label = ''
 
 
 class ChangeUserForm(UserChangeForm):
