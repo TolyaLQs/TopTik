@@ -27,9 +27,9 @@ def user_login(request):
             name = request.POST['username']
             user = User.objects.filter(name=name)
             if user:
-                error = 'Данное имя занято.'
+                error1 = 'Данное имя занято.'
                 context = {
-                    'error': error,
+                    'error1': error1,
                 }
                 return render(request, 'user/login.html', context)
             else:
@@ -48,6 +48,7 @@ def user_register(request):
     name = request.session.get('name', 'Нет имя')
     if request.method == 'POST':
         register_form = CreateUserForm(request.POST, request.FILES)
+        print(register_form)
         if register_form.is_valid():
             register_form.save()
             email = request.POST['email']
@@ -56,6 +57,7 @@ def user_register(request):
             if user is not None:
                 login(request, user)
                 return HttpResponseRedirect(reverse('main:index'))
+
     else:
         register_form = CreateUserForm()
         for reg in register_form:

@@ -19,6 +19,7 @@
                 {% if error %}
                     {{error}}
                 {% endif%}
+                {% csrf_token %}
                 <input type="email" placeholder="Введите email" name="email" required>
                 <input type="password" placeholder="Введите пароль" name="password" required>
                 <button type="submit" class="btn-login">Войти</button>
@@ -29,6 +30,10 @@
                 <span>Регистрация</span>
             </div>
             <form class="register" method="post">
+                {% if error1 %}
+                    {{error1}}
+                {% endif%}
+                {% csrf_token %}
                 <input type="text" placeholder="Введите имя пользователя" name="username" required>
                 <button type="submit" class="btn-register">Далее</button>
             </form>

@@ -28,7 +28,7 @@ class User(AbstractUser):
                               max_length=150, unique=True,
                               help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.',
                               validators=[email_validator],
-                              error_messages={'unique': 'A user with that email already exists.'})
+                              error_messages={'unique': 'Пользователь с этой почтой зарегестрирован.'})
     last_name = None
     avatar = models.ImageField(verbose_name='Аватарка',
                                blank=True, default='users/ava.png', upload_to='users')
