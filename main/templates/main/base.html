@@ -68,6 +68,10 @@
 <div class="content">
     <div class="left-menu">
         {% if user.is_authenticated %}
+            <div class="avatar">
+                <img src="{{user.avatar.url}}">
+            </div>
+            <div class="name">{{user.name|truncatechars:11 | default:"пользователь"}}</div>
         {% else %}
         <div class="popular-following">
             <span class="popular">Популярное</span>
@@ -83,6 +87,7 @@
 
         {% endblock %}
     </div>
+    <div class="my-following-fon2"></div>
     <div class="my-following-fon">
         <div class="my-following">
             {% if user.is_authenticated %}

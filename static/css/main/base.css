@@ -101,6 +101,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .left-menu{
@@ -113,6 +114,19 @@ body {
     align-items: center;
     border-radius: 20px;
     padding: 20px;
+    border: 1px solid #cccccc;
+}
+
+.avatar img{
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.name{
+    font-size: 26px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .left-menu .popular-following{
@@ -142,11 +156,21 @@ body {
     max-height:100%;
 }
 
+.my-following-fon2{
+    height: 100%;
+    width: 50px;
+    display:flex;
+    justify-content: end;
+}
+
 .my-following-fon{
     height: 100%;
     width: 200px;
     display:flex;
     justify-content: end;
+    position: absolute;
+    right: 0;
+
 }
 
 .my-following{
@@ -159,6 +183,7 @@ body {
     align-items: center;
     border-radius: 20px;
     padding: 10px;
+    border: 1px solid #cccccc;
 }
 
 .my-fol-tit{

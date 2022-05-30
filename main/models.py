@@ -22,7 +22,7 @@ class Post(models.Model):
     img = models.ImageField(verbose_name='Фото', blank=True, upload_to='post/photo')
     date_add = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     active = models.BooleanField(verbose_name='Активность', default=True)
-    author = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, verbose_name='Автор', related_name='post_author', on_delete=models.CASCADE)
     # auto_increment_id = models.AutoField(primary_key=True)
 
     # def quantity(self):
@@ -47,8 +47,8 @@ class Post(models.Model):
 
 
 class PostTag(models.Model):
-    tag = models.ForeignKey(Tag, verbose_name='Тег', on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, verbose_name='Пост', on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, verbose_name='Тег',  related_name='posttag_tag', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, verbose_name='Пост', related_name='posttag_post', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.tag.name} | {self.post.title}'

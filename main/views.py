@@ -21,8 +21,26 @@ def index(request):
     context = {
         'posts': posts,
     }
-
     return render(request, 'main/index.html', context)
+
+
+def search(request, search=None):
+    if request.method == 'GET':
+        if search:
+            print('123', search[0])
+            posts = PostTag.objects.all().filter(tag__name=search, post__active=True).order_by('-post__date_add')
+            if posts:
+                context = {
+                    'posts': posts,
+                }
+                return render(request, 'main/search.html', context)
+            else:
+                error_search = 'То что вы ищите, не найдено |('
+                context = {
+                    'error_search': error_search,
+                }
+                return render(request, 'main/search.html', context)
+        return render(request, 'main/search.html')
 
 
 def about(request):
