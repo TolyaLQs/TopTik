@@ -17,15 +17,16 @@ class CreateUserForm(UserCreationForm):
             field.help_text = ''
             if field_name == 'name':
                 field.widget.attrs['placeholder'] = field.label
+                field.widget.attrs['is_hidden'] = True
                 field.label = ''
             if field_name == 'email':
-                field.widget.attrs['placeholder'] = field.label
+                field.widget.attrs['placeholder'] = 'Введите Email'
                 field.label = ''
             if field_name == 'password1':
-                field.widget.attrs['placeholder'] = field.label
+                field.widget.attrs['placeholder'] = 'Введите пароль'
                 field.label = ''
             if field_name == 'password2':
-                field.widget.attrs['placeholder'] = field.label
+                field.widget.attrs['placeholder'] = 'Подтвердите пароль'
                 field.label = ''
             if field_name == 'sex':
                 field.widget.attrs['type'] = 'ratio'

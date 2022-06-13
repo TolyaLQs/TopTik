@@ -16,9 +16,7 @@
                 <span>Вход</span>
             </div>
             <form class="login" method="post">
-                {% if error %}
-                    {{error}}
-                {% endif%}
+
                 {% csrf_token %}
                 <input type="email" placeholder="Введите email" name="email" required>
                 <input type="password" placeholder="Введите пароль" name="password" required>
@@ -31,10 +29,14 @@
             </div>
             <form class="register" method="post">
                 {% if error1 %}
-                    {{error1}}
+                <div class="error">{{error1}}</div>
+                {% elif error %}
+                    <div class="error">{{error}}</div>
+                {% else %}
+                    <div class="err">Введите имя пользователя</div>
                 {% endif%}
                 {% csrf_token %}
-                <input type="text" placeholder="Введите имя пользователя" name="username" required>
+                <input type="text" placeholder="Введите имя" name="username" required>
                 <button type="submit" class="btn-register">Далее</button>
             </form>
         </div>
@@ -42,5 +44,5 @@
 {% endblock %}
 
 {% block js %}
-
+<script src="/static/js/login.js"></script>
 {% endblock %}
