@@ -1,16 +1,25 @@
+@media screen and (max-width: 2000px) and (min-width: 480px) {
 .register{
     width: 250px;
-    height: 250px;
+    height: 300px;
     display: flex;
-    justify-content: space-between;
-    align-items: start;
+    justify-content: start;
+    align-items: space-between;
     font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 1px;
+    flex-direction: column;
+}
+
+.register .error-div{
+ width:100%;
+ margin-bottom: 10px;
+ height: 20px;
+ color: red;
 }
 
 .register .title{
     width: 100%;
     margin-bottom: 20px;
-
 }
 
 .register .title span{
@@ -35,3 +44,308 @@
     padding: 20px;
 }
 
+.register .form-register .step-1{
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register .step-1 .name{
+    width:100%;
+    text-align:center;
+    font-size
+}
+
+.register .form-register .step-2{
+    display: none;
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register .step-3{
+    display: none;
+    margin-top: -10px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register input{
+    height: 30px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+}
+
+.register .form-register button, .btn-back-2, .btn-next-2, .btn-back-1, .btn-next-1{
+    height:30px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px rgba(0, 0, 0, 0.5) solid;
+    font-family: 'Noto Sans', sans-serif;
+    font-size:20px;
+    letter-spacing: 1px;
+    text-align: center;
+    background:none;
+}
+
+.register .form-register button:hover, .btn-back-2:hover, .btn-next-2:hover, .btn-back-1:hover, .btn-next-1:hover{
+    background: #d0d0d7;
+}
+
+.register .form-register .btn-st2{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register .form-register .btn-back-1, .btn-next-2{
+    width: 49%;
+}
+
+.register .form-register img{
+    width: 50px;
+    height:50px;
+}
+
+.users-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.download-photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input-avatar_label{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    width:100%;
+}
+
+.input-avatar_label .span{
+}
+
+.input-avatar_label span:hover, svg:hover{
+    fill: dodgerblue;
+    color: dodgerblue;
+}
+
+.input-avatar{
+    width: 3px;
+    height: 3px;
+}
+
+.download-photo span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#id_avatar{
+    opacity: 0.0;
+    display: none;
+}
+}
+
+@media screen and (max-width: 480px) {
+.register{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans', sans-serif;
+    letter-spacing: 1px;
+    flex-direction: column;
+    margin: 0 5px;
+}
+
+.register .error-div{
+ width:100%;
+ margin-bottom: 10px;
+ height: 20px;
+ color: red;
+}
+
+.register .title{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.register .title span{
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.register .form-register{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.register .form-register .step-1{
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register .step-1 .name{
+    width:100%;
+    text-align:center;
+    font-size
+}
+
+.register .form-register .step-2{
+    display: none;
+    margin-top: 10px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register .step-3{
+    display: none;
+    margin-top: -10px;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+}
+
+.register .form-register input{
+    height: 30px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0 0 0 10px;
+    font-size: 16px;
+}
+
+.register .form-register button, .btn-back-2, .btn-next-2, .btn-back-1, .btn-next-1{
+    height:30px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px rgba(0, 0, 0, 0.5) solid;
+    font-family: 'Noto Sans', sans-serif;
+    font-size:20px;
+    letter-spacing: 1px;
+    text-align: center;
+    background:none;
+    cursor: pointer;
+}
+
+.register .form-register button:hover, .btn-back-2:hover, .btn-next-2:hover, .btn-back-1:hover, .btn-next-1:hover{
+    background: #d0d0d7;
+}
+
+.register .form-register .btn-st2{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register .form-register .btn-back-1, .btn-next-2{
+    width: 49%;
+}
+
+.register .form-register img{
+    width: 100px;
+    height:100px;
+}
+
+.users-avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.download-photo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.input-avatar_label{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    width:100%;
+}
+
+.input-avatar_label .span{
+}
+
+.input-avatar_label span:hover, svg:hover{
+    fill: dodgerblue;
+    color: dodgerblue;
+}
+
+.input-avatar{
+    width: 3px;
+    height: 3px;
+}
+
+.download-photo span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#id_avatar{
+    opacity: 0.0;
+    display: none;
+}
+}
