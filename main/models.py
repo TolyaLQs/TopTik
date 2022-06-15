@@ -47,7 +47,7 @@ class Post(models.Model):
 
 
 class PostTag(models.Model):
-    tag = models.ForeignKey(Tag, verbose_name='Тег',  related_name='posttag_tag', on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, verbose_name='Тег', related_name='posttag_tag', on_delete=models.CASCADE)
     post = models.ForeignKey(Post, verbose_name='Пост', related_name='posttag_post', on_delete=models.CASCADE)
 
     def __str__(self):

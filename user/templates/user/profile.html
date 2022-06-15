@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'user/base.html' %}
 
-</body>
-</html>
+{% block title %}
+    <title>TopTik - Аккаунт</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/css/user/profile.css">
+{% endblock %}
+
+{% block content %}
+    {% if text_none %}
+        <div class="text-none">{{ text_none }}</div>
+    {% else %}
+        {% for pr in prof %}
+        <div class="profile">
+            <div class="top-profile-info">
+                <div class="profile-img">
+                    <img src="{{pr.avatar.url}}">
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name">{{pr.name}}</div>
+                    <div class="profile-sex">{{pr.sex}}</div>
+                    <div class="profile-photo">
+                        {% for photo in user_photo %}
+                        <div class="user-photo"><img src="{{photo.photo.url}}"></div>
+                        {% empty %}
+                        <div class="hot-user-photo">Фотографий нет</div>
+                        {% endfor %}
+                    </div>
+                    <div class="profile-data">
+                    {% for friend in user_friend %}
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

@@ -5,7 +5,7 @@ from user.forms import CreateUserForm, ChangeUserForm, ChangeUserAvatarForm
 # Create your views here.
 from django.urls import reverse
 
-from user.models import User
+from user.models import User, FriendUser, UserPhoto
 
 
 def user_login(request):
@@ -100,5 +100,31 @@ def user_edit(request):
 
 
 def user_profile(request, id=None):
-    pass
+    if id:
+        prof = User.objects.filter(id=id)
+        try:
+            if prof[0].is_active:
+                user_friend = FriendUser.objects.filter(user_friend_id=id)
 
+                user_photo = UserPhoto.objects.filter(user_id=id)
+                context = {
+                    'prof': prof,
+                    'user_friend': user_friend,
+                    'user_photo': user_photo,
+                }
+            else:
+                text_none = 'Пользователь удалил свой аккаунт ☹'
+                context = {
+                    'text_none': text_none,
+                }
+        except:
+            text_none = 'Упс...😳 Пользователь не найден!'
+            context = {
+                'text_none': text_none,
+            }
+    else:
+        text_none = 'Упс...😳 Пользователь не найден!'
+        context = {
+            'text_none': text_none,
+        }
+    return render(request, 'user/profile.html', context)

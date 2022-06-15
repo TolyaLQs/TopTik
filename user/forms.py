@@ -38,11 +38,9 @@ class CreateUserForm(UserCreationForm):
                 field.label = ''
                 field.error_message = '123456'
             if field_name == 'avatar':
-                field.widget.attrs['placeholder'] = field.label
                 field.widget.attrs['class'] = 'input-avatar'
                 field.widget.attrs['onchange'] = 'showFileName()'
                 field.label = ''
-                field.error_message = '123456'
 
 
 class ChangeUserForm(UserChangeForm):

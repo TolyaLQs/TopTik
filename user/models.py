@@ -40,10 +40,10 @@ class User(AbstractUser):
 
 
 class UserPhoto(models.Model):
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name='Пользователь', related_name='user_photo', on_delete=models.CASCADE)
     photo = models.ImageField(verbose_name='Фото пользователя', upload_to='user_photo')
 
 
 class FriendUser(models.Model):
-    user_friend = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    friend_user = models.ForeignKey(User, verbose_name='Друг', related_name='Друг', on_delete=models.CASCADE)
+    user_friend = models.ForeignKey(User, verbose_name='Пользователь', related_name='user_friend', on_delete=models.CASCADE)
+    friend_user = models.ForeignKey(User, verbose_name='Друг', related_name='friend', on_delete=models.CASCADE)
