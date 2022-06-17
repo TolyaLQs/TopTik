@@ -81,7 +81,7 @@ class Comment(models.Model):
 
 class PostLike(models.Model):
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, verbose_name='Пост', on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, verbose_name='Пост', related_name='post_like', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.user.name} | {self.post.title} | {self.post.date_add}'

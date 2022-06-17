@@ -4,7 +4,7 @@ from django.shortcuts import render
 from user.forms import CreateUserForm, ChangeUserForm, ChangeUserAvatarForm
 # Create your views here.
 from django.urls import reverse
-
+from main.views import Post, PostLike
 from user.models import User, FriendUser, UserPhoto
 
 
@@ -105,12 +105,15 @@ def user_profile(request, id=None):
         try:
             if prof[0].is_active:
                 user_friend = FriendUser.objects.filter(user_friend_id=id)
-
+                user_post = Post.objects.filter(author__id=id)
                 user_photo = UserPhoto.objects.filter(user_id=id)
+                user_like = PostLike.objects.filter(post__author=id)
                 context = {
                     'prof': prof,
                     'user_friend': user_friend,
                     'user_photo': user_photo,
+                    'user_post': user_post,
+                    'user_like': user_like,
                 }
             else:
                 text_none = 'Пользователь удалил свой аккаунт ☹'
