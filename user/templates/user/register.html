@@ -11,7 +11,7 @@
 {% block content %}
 <div class="register">
     {% if error %}
-    <div class="error-div">{{ error }}</div>
+    <div class="error-div">{{ register_form.email.error_message }}{{register_form.password1.error_message}}</div>
     {% endif %}
     <form method="post" enctype="multipart/form-data" action="" class="form-register">
         <div class="title">

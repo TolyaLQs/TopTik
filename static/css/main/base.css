@@ -6,6 +6,12 @@
     font-family: boom;
     src: url("/static/font/boomerang/Boomerang.ttf");
 }
+html, body{
+    scrollbar-color: #dddddd #f1f1f1; /* «цвет ползунка» «цвет полосы скроллбара» */
+    scrollbar-width: none;
+    scroll-snap-type: y proximity;
+    scrollbar-border: 50%;
+}
 
 body {
     display: flex;
@@ -13,9 +19,10 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
     margin: 0;
     background-color: #f1f1f1;
+    position: relative;
+
 }
 
 .top-menu {
@@ -24,9 +31,12 @@ body {
     align-items: center;
     background-color: #dddddd;
     width: 95%;
-    height: 40px;
+    height: 50px;
     padding: 0 25px;
     border-radius: 0 0 20px 20px;
+    position: fixed;
+    border-bottom: 10px solid #f1f1f1;
+    z-index: 1000;
 }
 
 .top-menu a {
@@ -99,13 +109,14 @@ body {
     width: 95%;
     height: 85%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: relative;
+    padding: 0;
 }
 
 .left-menu{
-    height: 100%;
+    height: 80%;
     width: 200px;
     display:flex;
     background-color: #dddddd;
@@ -115,6 +126,9 @@ body {
     border-radius: 20px;
     padding: 20px;
     border: 1px solid #cccccc;
+    position: fixed;
+    top: 50px;
+    left: 3%;
 }
 
 .avatar img{
@@ -151,26 +165,30 @@ body {
 }
 
 .ribbon{
-    max-width:90%;
-    min-width:40%;
+    width: 600px;
     max-height:100%;
+    margin-top: 50px;
+
 }
 
 .my-following-fon2{
-    height: 100%;
+    height: 80%;
     width: 50px;
     display:flex;
     justify-content: end;
+    position:fixed;
+    top: 50px;
+    right: 3%;
 }
 
 .my-following-fon{
-    height: 100%;
+    height: 80%;
     width: 200px;
     display:flex;
     justify-content: end;
-    position: absolute;
-    right: 0;
-
+    position: fixed;
+    right: 3%;
+    top: 50px;
 }
 
 .my-following{
@@ -215,8 +233,104 @@ body {
     padding: 0 25px;
     border-radius: 20px 20px 0 0;
     font-family: 'Noto Sans', sans-serif;
+    position: fixed;
+    border-top: 10px solid #f1f1f1;
+    bottom: 0;
+}
+
+.footer-menu{
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(221, 221, 221, 0.7);
+    width: 100%;
+    height: 50px;
+    padding: 0 25px;
+    font-family: 'Noto Sans', sans-serif;
+    position: fixed;
+    border-top: 1px solid #f1f1f1;
+    bottom: 0;
 }
 
 .footer .years{
     margin-right: 10px;
+}
+
+@media screen and (max-width: 1080px) and (min-width: 956px){
+    .content{
+        justify-content: center;
+    }
+    .ribbon{
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 955px) and (min-width: 731px){
+    .my-following-fon2{
+        display:none;
+    }
+    .my-following-fon{
+        display:none;
+    }
+    .content{
+        justify-content:start;
+    }
+    .ribbon{
+        margin-left:210px;
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 730px) and (min-width: 541px){
+    .left-menu{
+        display:none;
+    }
+    .my-following-fon2{
+        display:none;
+    }
+    .my-following-fon{
+        display:none;
+    }
+    .content{
+        justify-content:center;
+    }
+    .ribbon{
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 540px) and (min-width: 0px){
+    .left-menu{
+        display:none;
+    }
+    .my-following-fon2{
+        display:none;
+    }
+    .my-following-fon{
+        display:none;
+    }
+    .content{
+        justify-content:center;
+    }
+    .ribbon{
+        width: 480px;
+    }
+    .top-menu{
+        display:none;
+    }
+    .footer{
+        display:none;
+    }
+    .footer-menu{
+        display:flex;
+    }
+    .content{
+        width:100%;
+        height:100vh;
+    }
+    .ribbon{
+        width:100%;
+        width:100%;
+        margin-top: 0;
+    }
 }

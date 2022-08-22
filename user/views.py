@@ -51,7 +51,6 @@ def user_register(request):
     error = None
     if request.method == 'POST':
         register_form = CreateUserForm(request.POST, request.FILES)
-        print(register_form)
         if register_form.is_valid():
             register_form.save()
             email = request.POST['email']
@@ -62,7 +61,7 @@ def user_register(request):
                 return HttpResponseRedirect(reverse('main:index'))
         else:
             error = 'Ошибка'
-            register_form = CreateUserForm()
+            register_form = CreateUserForm(request.POST if request.POST else None)
             for reg in register_form:
                 if reg.name == 'name':
                     reg.initial = name

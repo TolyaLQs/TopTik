@@ -24,6 +24,7 @@ class CreateUserForm(UserCreationForm):
                 field.widget.attrs['placeholder'] = 'Введите Email'
                 field.widget.attrs['autofocus'] = 'true'
                 field.label = ''
+                field.error_message = '1234567'
             if field_name == 'password1':
                 field.widget.attrs['placeholder'] = 'Введите пароль'
                 field.label = ''
