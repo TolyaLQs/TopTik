@@ -25,9 +25,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, verbose_name='Автор', related_name='post_author', on_delete=models.CASCADE)
     # auto_increment_id = models.AutoField(primary_key=True)
 
-    # def quantity(self):
-    #     quantity = PostLike.objects.filter(post_id=id).count()
-    #     return quantity
+    def quantity(self):
+        quantity = PostLike.objects.filter(post__id=id).count()
+        return quantity
 
     def __str__(self):
         return f'{self.date_add} | {self.title}'

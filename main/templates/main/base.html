@@ -69,7 +69,8 @@
     <div class="left-menu">
         {% if user.is_authenticated %}
             <div class="avatar">
-                <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'user:profile' user.id %}">
+                <a class="{% if request.resolver_match.url_name == 'profile' %}active
+                {% endif %}" href="{% url 'user:profile' user.id %}">
                     <img src="{{user.avatar.url}}">
                 </a>
             </div>

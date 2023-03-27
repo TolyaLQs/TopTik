@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Post, PostLike, PostTag
 from user.models import FriendUser, User
-
+from .forms import AddLikePost
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -17,11 +18,30 @@ def index(request):
     # user = User.objects.get()
     # user.set_password('1234')
     # user.save()
+    if request.POST:
+        if 'search' in request.POST and request.POST['search']:
+            search= request.POST['search']
+            search(request, search)
+
     posts = Post.objects.all().filter(active=True).order_by('-date_add')
     context = {
         'posts': posts,
     }
     return render(request, 'main/index.html', context)
+
+
+def post_add_like(request):
+    if request.method == ['POST'] and request.is_ajax():
+        post = request.POST['post']
+        user = request.POST['user']
+        formAddLikePost = AddLikePost(request.POST)
+        if formAddLikePost.is_valid():
+            formAddLikePost.save()
+            name = 'Good like'
+            return JsonResponse({"name": name}, status=200)
+        else:
+            errors = formAddLikePost.errors.as_json()
+            return JsonResponse({"errors": errors}, status=400)
 
 
 def search(request, search=None):

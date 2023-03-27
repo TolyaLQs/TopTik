@@ -100,8 +100,8 @@ def user_edit(request):
 
 def user_profile(request, id=None):
     if id:
-        prof = User.objects.filter(id=id)
         try:
+            prof = User.objects.filter(id=id)
             if prof[0].is_active:
                 user_friend = FriendUser.objects.filter(user_friend_id=id)
                 user_post = Post.objects.filter(author__id=id)
