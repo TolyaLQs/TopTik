@@ -2,7 +2,9 @@ from django.shortcuts import render
 from .models import Post, PostLike, PostTag
 from user.models import FriendUser, User
 from .forms import AddLikePost
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+
+
 # Create your views here.
 
 
@@ -23,22 +25,41 @@ def index(request):
             search= request.POST['search']
             search(request, search)
 
-    posts = Post.objects.all().filter(active=True).order_by('-date_add')
-    context = {
-        'posts': posts,
-    }
+    try:
+        id_user = request.user.id
+    except:
+        id_user = None
+
+    posts = Post.objects.all().filter(active=True).order_by('-date_add')[0:20]
+    for post in posts:
+        post.check = post.check_like_user(id_user)
+    if id_user:
+        context = {
+            'posts': posts,
+            'id_user': id_user,
+        }
+    else:
+        context = {
+            'posts': posts,
+        }
     return render(request, 'main/index.html', context)
 
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
+
 def post_add_like(request):
-    if request.method == ['POST'] and request.is_ajax():
+    if is_ajax(request=request):
         post = request.POST['post']
         user = request.POST['user']
+
         formAddLikePost = AddLikePost(request.POST)
+        print(formAddLikePost)
         if formAddLikePost.is_valid():
             formAddLikePost.save()
-            name = 'Good like'
-            return JsonResponse({"name": name}, status=200)
+            quantity = PostLike.objects.filter(post__id=post).count()
+            return JsonResponse({"quantity": quantity}, status=200)
         else:
             errors = formAddLikePost.errors.as_json()
             return JsonResponse({"errors": errors}, status=400)

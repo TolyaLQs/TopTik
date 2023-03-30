@@ -27,9 +27,10 @@
                     <img class="img-post" loading="lazy" src="{{post.img.url}}">
                 </div>
             </div>
+            {% if user.is_authenticated %}
             <div class="img-l-f-r">
-                <div class="like-post">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="24"
+                <buton onclick="like({{post.id}}, {{user.id}})" class="like-post {{post.id}}" id="like-post-{{post.id}}">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="black" width="24"
                          height="24">
                         <use xlink:href="#svg-heart-fill">
                             <symbol id="svg-heart-fill">
@@ -66,7 +67,8 @@
                             </symbol>
                         </use>
                     </svg>
-                </div>
+                    <span>{{post.like_quantity}}</span>
+                </buton>
                 <div class="comments-post">
                     <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -88,6 +90,7 @@
                             </symbol>
                         </use>
                     </svg>
+                    <span>{{post.comment_quantity}}</span>
                 </div>
                 <div class="repost-post">
                     <svg width="24" height="24" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -116,14 +119,19 @@
                     </svg>
                 </div>
             </div>
-
+            {% endif %}
         </div>
         {% empty %}
         <div class="non-posts">Don't have posts.</div>
         {% endfor %}
     </div>
 </div>
+<div id="csrf">
+    {% csrf_token %}
+</div>
 {% endblock %}
 
 {% block js %}
+<script src="static/js/jquery-3.6.4.min.js"></script>
+<script src="static/js/index.js"></script>
 {% endblock %}
