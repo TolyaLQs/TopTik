@@ -80,3 +80,11 @@
     color:red;
     fill:red;
 }
+
+.img-l-f-r .comments-post{
+    cursor:pointer;
+}
+
+.img-l-f-r .repost-post{
+    cursor:pointer;
+}
