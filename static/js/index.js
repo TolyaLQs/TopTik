@@ -10,6 +10,11 @@ function like(post_id, user_id) {
             if (data) {
                 like_div = document.getElementById("like-post" + '-' + post_id);
                 like_div.children[1].innerHTML = data['quantity'];
+                if (data['active']){
+                    like_div.classList.add("active");
+                }else{
+                    like_div.classList.remove("active");
+                }
             }
         }
     });

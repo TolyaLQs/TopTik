@@ -27,13 +27,16 @@ class Post(models.Model):
 
     def check_like_user(self, user):
         try:
-            self.check = PostLike.objects.all(user__id=user).count()
-            if self.check:
-                return True
+            self.check = PostLike.objects.filter(user__id=user, post__id=self.id).count()
+            if self.check > 0:
+                self.check = True
+                return self.check
             else:
-                return False
+                self.check = False
+                return self.check
         except:
-            return False
+            self.check = False
+            return self.check
 
     def like_quantity(self):
         try:

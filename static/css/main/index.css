@@ -71,3 +71,12 @@
     height:;
     width:100%;
 }
+
+.img-l-f-r .like-post{
+    cursor:pointer;
+}
+
+.img-l-f-r .active i{
+    color:red;
+    fill:red;
+}
