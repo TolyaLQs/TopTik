@@ -24,8 +24,11 @@
             <div class="profile-like">Лайки{% if user_like.count > 0 %}: {{ user_like.count }}
                 {% endif %}
             </div>
+            {% if user.identifier == pr.identifier %}
+            <div class="profile-add-friend"></div>
+            {% endif %}
         </div>
-        {% if user.id == pr.id %}
+        {% if user.identifier == pr.identifier %}
             <div class="profile-update">Редактировать</div>
         {% endif %}
     </div>
@@ -33,14 +36,20 @@
         <div class="tit-prof-p-f-v">
             <div class="btn btn-post">Посты{% if user_post.count > 0 %}:
                 {{ user_post.count }}
+                {% else %}
+                0
                 {% endif %}
             </div>
-            <div class="btn btn-photo">Фото{% if user_photo.count > 0 %}:
-                {{ user_photo.count }}
+            <div class="btn btn-photo">Фото{% if pr.check_user_photo.count > 0 %}:
+                {{ pr.check_user_photo.count }}
+                {% else %}
+                0
                 {% endif %}
             </div>
-            <div class="btn btn-friend">Друзья{% if user_friend.count > 0 %}:
-                {{ user_friend.count }}
+            <div class="btn btn-friend">Друзья{% if pr.check_user_friend.count > 0 %}:
+                {{ pr.check_user_friend.count }}
+                {% else %}
+                0
                 {% endif %}
             </div>
         </div>
@@ -55,9 +64,8 @@
                 <div class="hot-user-post">Постов нет</div>
                 {% endfor %}
             </div>
-
             <div class="profile-photo">
-                {% for photo in user_photo %}
+                {% for photo in pr.check_user_photo %}
                 <div class="user-photo">
                     <img loading="lazy" src="{{photo.photo.url}}">
                     <div class="user-photo-like"></div>
@@ -68,7 +76,7 @@
             </div>
 
             <div class="profile-friend">
-                {% for friend in user_friend %}
+                {% for friend in pr.check_user_friend %}
 
                 {% empty %}
                 <div class="hot-user-photo">Друзей нет</div>

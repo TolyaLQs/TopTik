@@ -18,18 +18,6 @@ function like(post_id, user_id) {
             }
         }
     });
-//    console.log('like', post_id, " ", user_id);
-//    $.post('/postaddlike/',{ // постом отпровляем ассоциативный массив данных в на сервер
-//            post_id: post_id,
-//            user_id: user_id,
-//        }, function(response){
-//            console.log(response);
-//            if('error'==response.result){ //если есть ошибки то они отображаются
-//
-//            } else { // если нет ошибок показывается див с текстом об успешной отправки
-//
-//            }
-//        });
 }
 
 window.onload = function() {

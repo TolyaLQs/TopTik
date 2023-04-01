@@ -8,6 +8,6 @@ urlpatterns = [
     re_path('register/$', user.user_register, name='register'),
     re_path('edit/$', user.user_edit, name='edit'),
     re_path('logout/$', user.user_logout, name='logout'),
-    re_path('profile/(?P<id>.*\s*)/$', user.user_profile, name='profile'),
+    re_path('profile/(?P<identifier>.*\s*)/$', user.user_profile, name='profile'),
 ]
 

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.core import validators
 from django.db import models
-
+import uuid
 # Create your models here.
 
 
@@ -37,6 +37,17 @@ class User(AbstractUser):
     name = models.CharField(verbose_name='Имя', max_length=20,)
     sex = models.ForeignKey(SexUser, verbose_name='Пол', on_delete=models.CASCADE)
     about_user = models.TextField(verbose_name='О себе', max_length=250, blank=True)
+    identifier = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
+
+    def check_user_friend(self):
+        friend = FriendUser.objects.filter(user_friend__id=self.id)
+        return friend
+
+    def check_user_photo(self):
+        photo = UserPhoto.objects.filter(user__id=self.id)
+        return photo
+
+
 
 
 class UserPhoto(models.Model):

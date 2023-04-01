@@ -70,7 +70,7 @@
         {% if user.is_authenticated %}
             <div class="avatar">
                 <a class="{% if request.resolver_match.url_name == 'profile' %}active
-                {% endif %}" href="{% url 'user:profile' user.id %}">
+                {% endif %}" href="{% url 'user:profile' user.identifier %}">
                     <img src="{{user.avatar.url}}">
                 </a>
             </div>

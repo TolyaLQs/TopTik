@@ -11,11 +11,11 @@
         {% for post in posts %}
         <div class="post">
             <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
-               href="{% url 'user:profile' post.author.id %}">
+               href="{% url 'user:profile' post.author.identifier %}">
                 <img src="{{post.author.avatar.url}}"></a>
             <div class="post-desc-img">
                 <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
-                   href="{% url 'user:profile' post.author.id %}">@{{post.author.name}}</a>
+                   href="{% url 'user:profile' post.author.identifier %}">@{{post.author.name}}</a>
                 <div class="tag-post">
                     {% for post_tag in post.posttag_post.all %}
                     <a class="{% if request.resolver_match.url_name == 'search' %}active{% endif %}"
