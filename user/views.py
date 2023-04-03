@@ -99,12 +99,13 @@ def user_edit(request):
 
 
 def user_profile(request, identifier=None):
-    if id:
+    if identifier:
         try:
             prof = User.objects.filter(identifier=identifier)
             if prof[0].is_active:
                 user_post = Post.objects.filter(author__identifier=identifier)
                 user_like = PostLike.objects.filter(post__author__identifier=identifier)
+                # user_identifier = FriendUser.objects.filter(friend_user__id=identifier)
                 context = {
                     'prof': prof,
                     'user_post': user_post,

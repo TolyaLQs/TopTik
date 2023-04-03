@@ -39,15 +39,17 @@ class User(AbstractUser):
     about_user = models.TextField(verbose_name='О себе', max_length=250, blank=True)
     identifier = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
 
-    def check_user_friend(self):
-        friend = FriendUser.objects.filter(user_friend__id=self.id)
-        return friend
+    def check_user_subscriptions(self):
+        subscriptions = FriendUser.objects.filter(user_friend__id=self.id)
+        return subscriptions
 
     def check_user_photo(self):
         photo = UserPhoto.objects.filter(user__id=self.id)
         return photo
 
-
+    def check_user_subscribers(self):
+        subscribers = FriendUser.objects.filter(friend_user__id=self.id)
+        return subscribers
 
 
 class UserPhoto(models.Model):

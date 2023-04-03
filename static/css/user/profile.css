@@ -94,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 170px;
     height:90%;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 20px;
@@ -109,6 +109,10 @@
 .tit-prof-p-f-v .btn-photo{
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.tit-prof-p-f-v .btn-subscribers{
+    margin-left: 10px;
 }
 
 .profile-photo-friend-video{

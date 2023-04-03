@@ -25,6 +25,8 @@
                 {% endif %}
             </div>
             {% if user.identifier == pr.identifier %}
+            {% else %}
+
             <div class="profile-add-friend"></div>
             {% endif %}
         </div>
@@ -46,8 +48,14 @@
                 0
                 {% endif %}
             </div>
-            <div class="btn btn-friend">Друзья{% if pr.check_user_friend.count > 0 %}:
-                {{ pr.check_user_friend.count }}
+            <div class="btn btn-subscriptions">Подписки{% if pr.check_user_subscriptions.count > 0 %}:
+                {{ pr.check_user_subscriptions.count }}
+                {% else %}
+                0
+                {% endif %}
+            </div>
+            <div class="btn btn-subscribers">Подписчики{% if pr.check_user_subscribers.count > 0 %}:
+                {{ pr.check_user_subscribers.count }}
                 {% else %}
                 0
                 {% endif %}
@@ -74,12 +82,18 @@
                 <div class="hot-user-photo">Фотографий нет</div>
                 {% endfor %}
             </div>
-
-            <div class="profile-friend">
-                {% for friend in pr.check_user_friend %}
+            <div class="profile-subscriptions">
+                {% for friend in pr.check_user_subscriptions %}
 
                 {% empty %}
-                <div class="hot-user-photo">Друзей нет</div>
+                <div class="hot-user-photo">Подписок нет</div>
+                {%endfor%}
+            </div>
+            <div class="profile-subscribers">
+                {% for friend in pr.check_user_subscribers %}
+
+                {% empty %}
+                <div class="hot-user-photo">Подписчиков нет</div>
                 {%endfor%}
             </div>
         </div>
