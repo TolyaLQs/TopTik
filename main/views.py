@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post, PostLike, PostTag
+from .models import Post, PostLike, PostTag, Comment
 from user.models import FriendUser, User
 from .forms import AddLikePost
 from django.http import JsonResponse, HttpResponse
@@ -48,11 +48,23 @@ def index(request):
     return render(request, 'main/index.html', context)
 
 
+def check_comments(request):
+    if is_ajax(request=request):
+        post = request.POST['post']
+        user = request.POST['user']
+        try:
+            date = Comment.objects.filter(post__id=post, active=True).order_by('-date_add').as_json()
+            return JsonResponse({"date": date}, status=200)
+        except:
+            error = 'Написать комментарий...'
+            return JsonResponse({"date": error}, status=200)
+
+
 def post_add_like(request):
     if is_ajax(request=request):
         post = request.POST['post']
         user = request.POST['user']
-        print(post, user, '   ***********')
+        # print(post, user, '   ***********')
         try:
             like = PostLike.objects.filter(post__id=post, user__id=user)
         except:

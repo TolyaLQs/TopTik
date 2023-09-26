@@ -11,6 +11,7 @@
     {% endblock %}
 
     <link rel="stylesheet" href="/static/css/main/base.css">
+    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
 
     {% block css %}
     {% endblock %}
@@ -74,7 +75,7 @@
                     <img src="{{user.avatar.url}}">
                 </a>
             </div>
-            <div class="name">{{user.name|truncatechars:11 | default:"пользователь"}}</div>
+            <div class="name">{{user.name|truncatechars:11 | default:"Пользователь"}}</div>
         {% else %}
         <div class="popular-following">
             <span class="popular">Популярное</span>

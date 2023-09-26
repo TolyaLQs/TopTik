@@ -20,6 +20,21 @@ function like(post_id, user_id) {
     });
 }
 
+function comment(post_id, user_id) {
+    $.ajax({
+        url: '/checkcomments/',
+        headers: {'X-CSRFToken': document.getElementById('csrf').querySelector('input').value},
+        data: {post: post_id, user: user_id,},
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            if (data) {
+
+            }
+        }
+    });
+}
+
 window.onload = function() {
 
 }

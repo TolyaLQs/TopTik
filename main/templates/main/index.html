@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="/static/css/main/index.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
-
 {% block content %}
 <div class="index-content">
     <div class="posts">
@@ -12,14 +11,17 @@
         <div class="post">
             <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
                href="{% url 'user:profile' post.author.identifier %}">
-                <img src="{{post.author.avatar.url}}"></a>
+                <img src="{{post.author.avatar.url}}">
+            </a>
             <div class="post-desc-img">
                 <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
-                   href="{% url 'user:profile' post.author.identifier %}">@{{post.author.name}}</a>
+                   href="{% url 'user:profile' post.author.identifier %}">@{{post.author.name}}
+                </a>
                 <div class="tag-post">
                     {% for post_tag in post.posttag_post.all %}
                     <a class="{% if request.resolver_match.url_name == 'search' %}active{% endif %}"
-                       href="{% url 'main:search' post_tag.tag.name %}">{{ post_tag.tag.name }}</a>
+                       href="{% url 'main:search' post_tag.tag.name %}">{{ post_tag.tag.name }}
+                    </a>
                     {% endfor %}
                 </div>
                 <div class="title-post">{{post.title}}</div>
@@ -28,9 +30,8 @@
                     <img class="img-post" loading="lazy" src="{{post.img.url}}">
                 </div>
             </div>
-            {% if user.is_authenticated %}
             <div class="img-l-f-r">
-                <div onclick="like({{post.id}}, {{user.id}})" class="like-post {{post.id}} {% if post.check %}active{% endif %}" id="like-post-{{post.id}}">
+                <div {% if user.is_authenticated %} onclick="like({{post.id}}, {{user.id}})" {% endif %} class="like-post {{post.id}} {% if post.check %}active{% endif %}" id="like-post-{{post.id}}">
                     <i class="fa fa-heart"></i>
                     <span>{{post.post_like.count}}</span>
                 </div>
@@ -38,6 +39,7 @@
                     <i class="fa fa-commenting-o"></i>
                     <span>{{post.comment_quantity}}</span>
                 </div>
+                {% if user.is_authenticated %}
                 <div class="repost-post">
                     <svg width="24" height="24" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <use xlink:href="#svg-pc-share">
@@ -64,20 +66,46 @@
                         </use>
                     </svg>
                 </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
         {% empty %}
         <div class="non-posts">Don't have posts.</div>
         {% endfor %}
+    </div>
+    <div style="display:none;" class="fon-black">
+        <div class="btn-back"><i class="fa fa-times"></i></div>
+        <div class="full-post">
+            <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
+               href="{% url 'user:profile' post.author.identifier %}">
+                <img src="{{post.author.avatar.url}}">
+            </a>
+            <div class="post-desc-img">
+                <a class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"
+                   href="{% url 'user:profile' post.author.identifier %}">@{{post.author.name}}
+                </a>
+                <div class="tag-post">
+                    {% for post_tag in post.posttag_post.all %}
+                    <a class="{% if request.resolver_match.url_name == 'search' %}active{% endif %}"
+                       href="{% url 'main:search' post_tag.tag.name %}">{{ post_tag.tag.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+                <div class="title-post">{{post.title}}</div>
+                <div class="desc-post">{{post.desc}}</div>
+                <div class="div-img">
+                    <img class="img-post" loading="lazy" src="{{post.img.url}}">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div id="csrf">
     {% csrf_token %}
 </div>
 {% endblock %}
-
 {% block js %}
 <script src="static/js/jquery-3.6.4.min.js"></script>
 <script src="static/js/index.js"></script>
 {% endblock %}
+
